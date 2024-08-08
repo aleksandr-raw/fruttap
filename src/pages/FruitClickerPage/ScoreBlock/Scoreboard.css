@@ -1,0 +1,35 @@
+
+.scoreboard {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 44px;
+    background-color: #66496D;
+    box-sizing: border-box;
+    border-radius: 20px;
+    border: 1px solid white;
+    overflow: hidden;
+    margin: 64px 20px 0;
+}
+
+.scoreboard-coin {
+    width: 30px;
+    height: 30px;
+}
+
+.scoreboard-score {
+    font-size: 48px;
+    z-index: 5;
+    line-height: 1;
+    color: white;
+    text-align: end;
+    position: relative;
+}
+
+.scoreboard-bg {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    right: 0;
+}

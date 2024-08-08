@@ -1,0 +1,43 @@
+
+.energy {
+    font-family: 'Qanelas Soft', sans-serif;
+    font-size: 12px;
+    margin-top: 65px;
+    margin-left: 26px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+}
+
+.energy-title__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+}
+
+.energy-level__container {
+    position: relative;
+    margin-top: 10px;
+    overflow: hidden;
+    background-color: #22001B;
+    width: 120px;
+    height: 30px;
+    border-radius: 38px;
+}
+
+.energy-level__value {
+    font-size: 12px;
+    color: white;
+    position: absolute;
+    top: 10px;
+    right: 55px;
+}
+
+.energy-level__bar {
+    height: 100%;
+    border-radius: 0 38px 38px 0;
+    background: linear-gradient(90deg, #FF6E05 0%, #F83C27 100%);
+}

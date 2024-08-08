@@ -1,0 +1,47 @@
+.clicker {
+    position: relative;
+    margin-top: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.clicker-strawberry_bg {
+    position: absolute;
+    z-index: 0;
+    right: 0;
+    width: 100%;
+}
+
+.clicker-strawberry {
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    transition: transform 0.2s ease;
+}
+
+
+.clicker-tap-count {
+    position: absolute;
+    top: 75px;
+    left: 55px;
+    font-size: 36px;
+    color: #fff;
+}
+
+.clicker-splash {
+    position: absolute;
+    animation: moveUp 1s ease-out forwards;
+    z-index: 2;
+}
+
+@keyframes moveUp {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+}

@@ -1,0 +1,37 @@
+
+.fruit-app {
+    position: relative;
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.fruit-bg-eclipse1 {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+}
+
+.fruit-bg-eclipse4 {
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+}
+
+.fruit-bg-eclipse5 {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    top: 20px;
+}
+
+.fruit-bg-splash {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    bottom: 74px;
+    left: 0;
+}
