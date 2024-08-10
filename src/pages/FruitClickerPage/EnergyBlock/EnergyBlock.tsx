@@ -1,18 +1,24 @@
 import type {FC} from 'react';
 import './EnergyBlock.css';
 
-export const EnergyBlock: FC = () => {
-    const energy = 89;
+interface EnergyBlockProps {
+    energy: number;
+    maxEnergy: number;
+}
+
+export const EnergyBlock: FC<EnergyBlockProps> = ({energy, maxEnergy}) => {
+    const energyPercentage = (energy / maxEnergy) * 100;
+
     return (
         <div className={'energy'}>
             <div className={'energy-title__container'}>
                 <p className={'energy-title'}>Your energy: </p> <span
-                className={'energy-percentage'}>{energy}%</span>
+                className={'energy-percentage'}>{energyPercentage.toFixed(0)}%</span>
             </div>
             <div className={'energy-level__container'}>
                 <p className={'energy-level__value '}>{energy}</p>
-                <div className={'energy-level__bar'} style={{width: `${energy}%`}}/>
+                <div className={'energy-level__bar'} style={{width: `${energyPercentage}%`}}/>
             </div>
         </div>
-    )
+    );
 };
