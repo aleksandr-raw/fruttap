@@ -52,7 +52,7 @@ export const App: FC = () => {
             <Router location={location} navigator={reactNavigator}>
                 <Routes>
                     {/*{routes.map((route) => <Route key={route.path} {...route} />)}*/}
-                    <Route path='/' element={<FruitClickerPage/>}/>
+                    <Route path='/' element={<FruitClickerPage lp={lp}/>}/>
                     <Route path='*' element={<Navigate to='/'/>}/>
                 </Routes>
             </Router>

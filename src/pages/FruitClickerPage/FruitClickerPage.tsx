@@ -1,4 +1,4 @@
-import {useEffect, useRef, useState} from 'react';
+import {FC, useEffect, useRef, useState} from 'react';
 import './FruitClickerPage.css';
 import {Scoreboard} from '@/pages/FruitClickerPage/ScoreBlock/Scoreboard';
 import {FruitClicker} from '@/pages/FruitClickerPage/FruitClicker/FruitClicker';
@@ -9,15 +9,24 @@ import {Eclipse4Img} from '@/assets/images/Ellipse4Img';
 import {Eclipse1Img} from '@/assets/images/Ellipse1Img';
 import {getUserData, sendUserDataOnExit, WS_BASE_URL} from "@/api/api.ts";
 import {MAX_ENERGY} from "@/constants.ts";
+import {LaunchParams} from "@telegram-apps/sdk-react";
 
-const userId = 19
 
-export const FruitClickerPage = () => {
+type FruitClickerPageProps = {
+    lp: LaunchParams
+}
+
+export const FruitClickerPage: FC<FruitClickerPageProps> = ({lp}) => {
+
+    const userId = lp.initData?.user?.id;
     const [energy, setEnergy] = useState<number>(0);
     const [coins, setCoins] = useState<number>(0);
     const coinsSocketRef = useRef<WebSocket | null>(null);
     const energySocketRef = useRef<WebSocket | null>(null);
 
+    if (!userId) {
+        return;
+    }
     useEffect(() => {
         coinsSocketRef.current = new WebSocket(`${WS_BASE_URL}/coins_gain/${userId}/`);
         energySocketRef.current = new WebSocket(`${WS_BASE_URL}/energy_gain/${userId}/`);
