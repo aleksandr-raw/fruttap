@@ -19,7 +19,7 @@ type FruitClickerPageProps = {
 export const FruitClickerPage: FC<FruitClickerPageProps> = ({lp}) => {
 
     const userId = lp.initData?.user?.id;
-    const [energy, setEnergy] = useState<number>(0);
+    const [energy, setEnergy] = useState<number>(MAX_ENERGY);
     const [coins, setCoins] = useState<number>(0);
     const coinsSocketRef = useRef<WebSocket | null>(null);
     const energySocketRef = useRef<WebSocket | null>(null);
