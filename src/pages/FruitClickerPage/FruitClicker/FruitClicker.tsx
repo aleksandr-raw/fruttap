@@ -1,4 +1,5 @@
-import {FC, useState} from 'react';
+// Обновите файл `src/pages/FruitClickerPage/FruitClicker/FruitClicker.tsx`
+import {FC, useRef, useState} from 'react';
 import strawberry from '@/assets/images/strawberry.png';
 import './FruitClicker.css';
 import {StrawberryBgImg} from '@/assets/images/StrawberryBgImg';
@@ -21,6 +22,8 @@ type Splash = {
 
 export const FruitClicker: FC<FruitClickerProps> = ({count, setCount, energy, setEnergy}) => {
     const [splashes, setSplashes] = useState<Splash[]>([]);
+    const strawberryRef = useRef<HTMLImageElement>(null);
+
     const handleTouchStart = (e: React.TouchEvent) => {
         if (energy < e.touches.length) {
             return;
@@ -40,6 +43,16 @@ export const FruitClicker: FC<FruitClickerProps> = ({count, setCount, energy, se
         setTimeout(() => {
             setSplashes(splashes => splashes.filter(splash => !newSplashes.some(newSplash => newSplash.id === splash.id)));
         }, 1000);
+
+        // Добавляем класс для анимации
+        if (strawberryRef.current) {
+            strawberryRef.current.classList.add('clicked');
+            setTimeout(() => {
+                if (strawberryRef.current) {
+                    strawberryRef.current.classList.remove('clicked');
+                }
+            }, 200);
+        }
     };
 
     const handleTouchMove = (e: React.TouchEvent) => {
@@ -53,7 +66,7 @@ export const FruitClicker: FC<FruitClickerProps> = ({count, setCount, energy, se
     return (
         <div className={'clicker'} onTouchStart={handleTouchStart} onTouchMove={handleTouchMove}
              onTouchEnd={handleTouchEnd}>
-            <img className={'clicker-strawberry'} src={strawberry} alt="strawberry"/>
+            <img ref={strawberryRef} className={'clicker-strawberry'} src={strawberry} alt="strawberry"/>
             <StrawberryBgImg className={'clicker-strawberry_bg'}/>
             {splashes.map(splash => (
                 <div key={splash.id} className={'clicker-splash'} style={{top: splash.y - 50, left: splash.x - 80}}>
